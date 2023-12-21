@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+
+<div class="discover" id="discover">
+<h1>👋 Welcome to UDAlexplorer! </h1> 
+  <p>Explore your inner thoughts and express them in words.</p>
+</div>
+
+<% blogPost.forEach(post => { %>
+    <div>
+        <h2><%= post.title %></h2>
+        <p>
+            <%= post.content.substring(0, 100) + " ..." %>
+            <a href="/posts/<%= post.title %>">Read More</a>
+        </p>        
+    </div>
+
+      <div class="d-grid gap-2 d-lg-flex justify-content-md-start mb-4 mb-lg-3 btn-both">
+        <a href="/edit/<%= post.id %>">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">
+            Edit
+        </button>
+    </a>
+
+    <a href="/delete/<%= post.id %>">
+        <button type="button" class="btn btn-outline-secondary custom-button btn-lg px-4">
+            Delete
+        </button>
+    </a>
+      </div>
+      <hr>
+
+
+    
+    
+<% }); %>
+
+<div class="d-flex justify-content-center py-3">
+<a href="/compose">
+<button class="btn btn-secondary btn-new-blog  d-inline-flex align-items-center" type="button">
+    New Discovery
+    <i class="fa-regular fa-plus" style="color: #28303e;"></i>
+</button>
+</a>
+</div>
+
+        
+    <%- include("partials/footer.ejs") %>
